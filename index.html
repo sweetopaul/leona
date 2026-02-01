@@ -1,0 +1,192 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<title>For My Little Sister 💖</title>
+
+<style>
+body {
+    margin: 0;
+    height: 100vh;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    font-family: 'Segoe UI', sans-serif;
+    overflow: hidden;
+    background-size: cover;
+    background-position: center;
+    animation: bgFade 20s infinite;
+}
+
+/* Background overlay for softness */
+body::before {
+    content: "";
+    position: fixed;
+    inset: 0;
+    background: rgba(255, 120, 160, 0.55);
+    z-index: -1;
+}
+
+.container {
+    background: white;
+    width: 380px;
+    padding: 25px;
+    border-radius: 20px;
+    text-align: center;
+    box-shadow: 0 25px 50px rgba(0,0,0,0.25);
+    animation: fadeIn 2s;
+    z-index: 2;
+}
+
+h1 {
+    color: #ff3d68;
+    margin-bottom: 10px;
+}
+
+img {
+    width: 100%;
+    height: 220px;
+    object-fit: cover;
+    border-radius: 15px;
+    margin: 15px 0;
+    animation: zoom 4s infinite;
+}
+
+p {
+    color: #444;
+    font-size: 15px;
+    line-height: 1.6;
+}
+
+button {
+    margin-top: 15px;
+    padding: 12px 25px;
+    border: none;
+    border-radius: 25px;
+    background: #ff3d68;
+    color: white;
+    font-size: 16px;
+    cursor: pointer;
+}
+
+/* Floating hearts */
+.heart {
+    position: absolute;
+    font-size: 22px;
+    animation: float 6s linear infinite;
+    color: #ff2f6d;
+    z-index: 1;
+}
+
+/* Animations */
+@keyframes fadeIn {
+    from { opacity: 0; transform: translateY(20px); }
+    to { opacity: 1; transform: translateY(0); }
+}
+
+@keyframes zoom {
+    0% { transform: scale(1); }
+    50% { transform: scale(1.05); }
+    100% { transform: scale(1); }
+}
+
+@keyframes float {
+    from { transform: translateY(100vh); opacity: 1; }
+    to { transform: translateY(-10vh); opacity: 0; }
+}
+</style>
+</head>
+
+<body>
+
+<!-- MUSIC -->
+<audio id="bgMusic" autoplay loop muted>
+    <source src="Tum Mile.mp3" type="audio/mpeg">
+</audio>
+
+<div class="container">
+    <h1>Happy Birthday 💕</h1>
+    <img id="slide" src="photo1.jpeg">
+
+    <p>
+        My dear little sister,<br><br>
+        From the day you came into my life, everything became brighter 🌸  
+        Your smile heals me, your happiness is my peace,  
+        and your tears are something I never want to see.<br><br>
+
+        No matter how big we grow,  
+        I will always be right beside you —  
+        protecting you, supporting you, and loving you endlessly ❤️
+    </p>
+
+    <button onclick="surprise()">One More Surprise 🎁</button>
+</div>
+
+<script>
+// PHOTO SLIDES
+let photos = [
+    "photo1.jpeg",
+    "photo2.jpeg",
+    "photo3.jpeg",
+    "photo6.jpeg",
+    "photo4.jpeg",
+    "photo7.jpeg"
+];
+
+let index = 0;
+setInterval(() => {
+    index = (index + 1) % photos.length;
+    document.getElementById("slide").src = photos[index];
+}, 3000);
+
+// BACKGROUND IMAGES
+let backgrounds = [
+    "photo10.jpeg",
+    "photo11.jpeg",
+    "photo12.jpeg",
+    "photo12.jpeg",
+    "photo14.jpeg",
+    "photo15.jpeg"
+];
+
+let bgIndex = 0;
+setInterval(() => {
+    document.body.style.backgroundImage =
+        `url('${backgrounds[bgIndex]}')`;
+    bgIndex = (bgIndex + 1) % backgrounds.length;
+}, 5000);
+
+// MUSIC UNMUTE
+window.onload = () => {
+    setTimeout(() => {
+        const music = document.getElementById("bgMusic");
+        music.muted = false;
+        music.volume = 0.6;
+    }, 800);
+};
+
+// CONTINUOUS HEARTS
+setInterval(() => {
+    let heart = document.createElement("div");
+    heart.className = "heart";
+    heart.innerHTML = "❤️";
+    heart.style.left = Math.random() * 100 + "vw";
+    heart.style.fontSize = (Math.random() * 15 + 15) + "px";
+    heart.style.animationDuration = (Math.random() * 3 + 4) + "s";
+    document.body.appendChild(heart);
+
+    setTimeout(() => heart.remove(), 7000);
+}, 300);
+
+// BUTTON SURPRISE
+function surprise() {
+    alert(
+        "You are not just my sister,\n" +
+        "you are my heart, my pride, and my forever little baby 💖\n\n" +
+        "Happy Birthday 🌸"
+    );
+}
+</script>
+
+</body>
+</html>
